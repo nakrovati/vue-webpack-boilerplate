@@ -2,7 +2,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
-const webpack = require("webpack");
 
 module.exports = {
   entry: {
@@ -36,7 +35,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@": path.join(__dirname,"src"),
+      "@": path.join(__dirname, "src"),
     },
   },
   plugins: [
@@ -48,10 +47,6 @@ module.exports = {
       minify: true,
       inject: true,
       title: '"Vue-webpack-boilerplate" App',
-    }),
-    new webpack.DefinePlugin({
-      __VUE_OPTIONS_API__: "true",
-      __VUE_PROD_DEVTOOLS__: "false",
     }),
   ],
   optimization: {

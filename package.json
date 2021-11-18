@@ -1,6 +1,6 @@
 {
   "name": "vue-webpack-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "src/main.js",
   "scripts": {
@@ -8,27 +8,25 @@
     "build": "webpack --config webpack.prod.js --progress",
     "build:stats": "webpack --config webpack.prod.js --progress --profile --json=stats.json",
     "bundle:report": "webpack-bundle-analyzer stats.json dist/",
-    "lint": "eslint --ext .js,.vue src/ --ignore-path .gitignore",
-    "format": "prettier --write . --ignore-path .gitignore"
+    "lint:code": "eslint --ext .js,.vue src/ --fix",
+    "lint:styles": "stylelint **/*.{css,scss,html,vue} --fix",
+    "format": "prettier --write ."
   },
   "author": "nakrovati <nakrovati@outlook.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nakrovati/vue-webpack-boilerplate.git"
   },
+  "homepage": "https://github.com/nakrovati/vue-webpack-boilerplate#readme",
   "keywords": [
     "vue",
     "vue-router",
     "vuex",
     "webpack",
-    "npm",
+    "frontend",
     "boilerplate"
   ],
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Easybuoy/vue-webpack-boilerplate/issues"
-  },
-  "homepage": "https://github.com/nakrovati/vue-webpack-boilerplate#readme",
   "dependencies": {
     "vue": "^3.2.20",
     "vue-router": "^4.0.11",
@@ -45,18 +43,24 @@
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
     "html-webpack-plugin": "^5.3.2",
     "postcss": "^8.3.9",
+    "postcss-html": "^1.2.0",
     "postcss-loader": "^6.1.1",
     "prettier": "^2.4.1",
     "sass": "^1.42.1",
     "sass-loader": "^12.1.0",
+    "stylelint": "^14.1.0",
+    "stylelint-config-html": "^1.0.0",
+    "stylelint-config-recommended-scss": "^5.0.1",
+    "stylelint-declaration-block-no-ignored-properties": "^2.5.0",
     "vue-loader": "^16.8.1",
     "vue-style-loader": "^4.1.3",
     "webpack": "^5.58.1",
     "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.9.0",
+    "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.3.1",
     "webpack-merge": "^5.8.0"
   }

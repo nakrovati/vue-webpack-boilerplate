@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const common = require("./webpack.common.js");
 const { merge } = require("webpack-merge");
+const webpack = require("webpack");
 
 module.exports = merge(common, {
   mode: "production",
@@ -8,19 +9,25 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["vue-style-loader", "css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.s[ac]ss$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           "vue-style-loader",
           "css-loader",
-          "sass-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              additionalData: '@import "src/styles/_variables.scss";',
+            },
+          },
           "postcss-loader",
         ],
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: "true",
+      __VUE_PROD_DEVTOOLS__: "false",
+    }),
+  ],
 });

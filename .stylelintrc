@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "stylelint-config-recommended-scss",
+    "stylelint-config-html/html",
+    "stylelint-config-html/vue"
+  ],
+  "plugins": [
+    "stylelint-declaration-block-no-ignored-properties"
+  ],
+  "rules": {
+    "plugin/declaration-block-no-ignored-properties": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "at-rule-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "max-empty-lines": 1
+  }
+}
