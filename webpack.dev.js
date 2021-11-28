@@ -2,8 +2,8 @@
 const path = require("path");
 const common = require("./webpack.common.js");
 const { merge } = require("webpack-merge");
-
 const webpack = require("webpack");
+
 module.exports = merge(common, {
   mode: "development",
   target: "web",
@@ -23,7 +23,6 @@ module.exports = merge(common, {
             loader: "sass-loader",
             options: {
               sourceMap: true,
-              additionalData: '@import "src/styles/_variables.scss";',
             },
           },
           "postcss-loader",

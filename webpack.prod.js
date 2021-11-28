@@ -15,9 +15,6 @@ module.exports = merge(common, {
           "css-loader",
           {
             loader: "sass-loader",
-            options: {
-              additionalData: '@import "src/styles/_variables.scss";',
-            },
           },
           "postcss-loader",
         ],

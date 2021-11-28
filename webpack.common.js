@@ -2,6 +2,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
+const StyleLintWebpackPlugin = require("stylelint-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -24,7 +25,7 @@ module.exports = {
         loader: "vue-loader",
       },
       {
-        test: /\.(eot|ttf|woff|woff2)(\?\S*)?$/,
+        test: /\.(eot|ttf|woff|woff2)$/,
         type: "asset/inline",
       },
       {
@@ -40,6 +41,11 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new StyleLintWebpackPlugin({
+      context: path.resolve(__dirname, "./src"),
+      files: "**/*.{css,scss,html,vue}",
+      fix: true,
+    }),
     new HtmlWebpackPlugin({
       favicon: path.resolve(__dirname, "public/favicon.ico"),
       template: path.resolve(__dirname, "public/index.html"),
