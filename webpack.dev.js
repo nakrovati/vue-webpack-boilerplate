@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 const path = require("path");
+const webpack = require("webpack");
 const common = require("./webpack.common.js");
 const { merge } = require("webpack-merge");
-const webpack = require("webpack");
 
 module.exports = merge(common, {
   mode: "development",
@@ -10,22 +10,35 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.css$/,
         use: [
-          "vue-style-loader",
+          "style-loader",
           {
             loader: "css-loader",
             options: {
               sourceMap: true,
             },
           },
+          "postcss-loader",
+        ],
+      },
+      {
+        test: /\.(sa|sc)ss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+          "postcss-loader",
           {
             loader: "sass-loader",
             options: {
               sourceMap: true,
             },
           },
-          "postcss-loader",
         ],
       },
     ],
