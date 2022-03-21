@@ -1,22 +1,22 @@
 /* eslint-disable no-undef */
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
-const StyleLintWebpackPlugin = require("stylelint-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, "src", "main.js"),
+    app: path.resolve(__dirname, "./src/main.js"),
   },
   output: {
-    filename: "[name].[contenthash].js",
+    filename: "js/[name].[contenthash:8].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader",
       },
@@ -25,34 +25,61 @@ module.exports = {
         loader: "vue-loader",
       },
       {
-        test: /\.(eot|ttf|woff|woff2)$/,
-        type: "asset/inline",
+        test: /\.html$/,
+        loader: "html-loader",
       },
       {
-        test: /\.(png|jpe?g|gif|webm|mp4|svg)$/,
+        test: /\.(eot|ttf|woff|woff2)$/,
         type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]",
+        },
+      },
+      {
+        test: /\.svg$/,
+        type: "asset/resource",
+        use: [
+          {
+            loader: "svgo-loader",
+          },
+        ],
+        generator: {
+          filename: "icons/[name][ext]",
+        },
+      },
+      {
+        test: /\.(png|jpe?g|webp|gif)$/,
+        type: "asset/resource",
+        generator: {
+          filename: "images/[name][ext]",
+        },
+      },
+      {
+        test: /\.(mp4|webm)$/,
+        type: "asset/resource",
+        generator: {
+          filename: "video/[name][ext]",
+        },
       },
     ],
   },
   resolve: {
     alias: {
-      "@": path.join(__dirname, "src"),
+      "@": path.resolve(__dirname, "./src/"),
+      Styles: path.resolve(__dirname, "./src/styles/"),
+      Icons: path.resolve(__dirname, "./src/assets/icons/"),
+      Favicons: path.resolve(__dirname, "./src/assets/icons/favicons/"),
     },
   },
   plugins: [
-    new VueLoaderPlugin(),
-    new StyleLintWebpackPlugin({
-      context: path.resolve(__dirname, "./src"),
-      files: "**/*.{css,scss,html,vue}",
-      fix: true,
+    new webpack.DefinePlugin({
+      "process.env.BASE_URL": '"/"',
     }),
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      favicon: path.resolve(__dirname, "public/favicon.ico"),
-      template: path.resolve(__dirname, "public/index.html"),
+      template: path.resolve(__dirname, "./src/index.html"),
       filename: "index.html",
-      minify: true,
       inject: true,
-      title: '"Vue-webpack-boilerplate" App',
     }),
   ],
   optimization: {
@@ -60,13 +87,7 @@ module.exports = {
     runtimeChunk: "single",
     minimize: true,
     splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all",
-        },
-      },
+      chunks: "all",
     },
   },
 };
