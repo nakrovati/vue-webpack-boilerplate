@@ -2,7 +2,8 @@
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-html/html",
-    "stylelint-config-html/vue"
+    "stylelint-config-html/vue",
+    "stylelint-config-prettier"
   ],
   "plugins": ["stylelint-declaration-block-no-ignored-properties"],
   "rules": {
@@ -12,11 +13,13 @@
     "selector-no-vendor-prefix": true,
     "property-no-vendor-prefix": true,
     "value-no-vendor-prefix": true,
-    "max-empty-lines": 1
+    "max-empty-lines": 1,
+    "rule-empty-line-before": "always",
+    "at-rule-no-unknown": [true, { "ignoreAtRules": ["use"] }]
   },
   "overrides": [
     {
-      "files": ["src/**/*.css", "src/**/*.scss"],
+      "files": ["src/**/*.scss"],
       "customSyntax": "postcss-scss"
     },
     {
