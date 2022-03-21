@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 const path = require("path");
-const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 
@@ -76,9 +75,6 @@ module.exports = {
     },
   },
   plugins: [
-    new webpack.DefinePlugin({
-      "process.env.BASE_URL": '"/"',
-    }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./src/index.html"),
