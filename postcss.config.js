@@ -1,4 +1,4 @@
 /* eslint-disable no-undef */
 module.exports = {
-  plugins: ["autoprefixer"],
+  plugins: { autoprefixer: {}, "postcss-csso": {} },
 };
