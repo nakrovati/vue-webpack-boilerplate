@@ -3,7 +3,11 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "Styles/*": ["./src/styles/*"],
+      "Assets/*": ["./src/assets/*"],
+      "Components/*": ["./src/components/*"],
+      "Router/*": ["./src/router/*"],
+      "Store/*": ["./src/store/*"],
+      "Views/*": ["./src/views/*"],
       "Icons/*": ["./src/assets/icons/*"],
       "Favicons/*": ["./src/assets/icons/favicons/*"]
     }
