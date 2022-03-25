@@ -17,6 +17,7 @@ npm run dev
 
 ## Features
 
+* Favicons and SVG support. Also includes an svgo-loader that minifies svg files.
 * SASS. Includes SASS support in HTML, SASS/SCSS and Vue files.
 * PostCSS. Includes autoprefixer and CSSO minifier.
 * Babel.
