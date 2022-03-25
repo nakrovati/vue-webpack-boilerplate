@@ -3,18 +3,8 @@
   "version": "1.0.3",
   "description": "",
   "main": "src/main.js",
-  "scripts": {
-    "dev": "webpack serve --config webpack.dev.js",
-    "watch": "webpack serve --config webpack.dev.js --watch",
-    "build": "webpack --config webpack.prod.js --progress",
-    "build:stats": "webpack --config webpack.prod.js --progress --profile --json=stats.json",
-    "build:report": "webpack-bundle-analyzer stats.json dist",
-    "lint": "npm run lint:code && npm run lint:styles",
-    "lint:code": "eslint --ext .js,.vue --fix",
-    "lint:styles": "stylelint **/*.{css,scss,html,vue} --fix",
-    "format": "prettier --write ."
-  },
   "author": "nakrovati <nakrovati@outlook.com>",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nakrovati/vue-webpack-boilerplate.git"
@@ -27,7 +17,17 @@
     "frontend",
     "boilerplate"
   ],
-  "license": "ISC",
+  "scripts": {
+    "dev": "webpack serve --config webpack.dev.js",
+    "watch": "webpack serve --config webpack.dev.js --watch",
+    "build": "webpack --config webpack.prod.js --progress",
+    "build:stats": "webpack --config webpack.prod.js --progress --profile --json=stats.json",
+    "build:report": "webpack-bundle-analyzer stats.json dist",
+    "lint": "eslint --ext .js,.vue",
+    "lint:fix": "eslint --ext .js,.vue --fix",
+    "lint:styles": "stylelint **/*.{css,scss,html,vue} --fix",
+    "format": "prettier --write ."
+  },
   "dependencies": {
     "core-js": "^3.21.1",
     "vue": "^3.2.26",
