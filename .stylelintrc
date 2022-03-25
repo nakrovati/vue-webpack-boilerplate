@@ -7,15 +7,15 @@
   ],
   "plugins": ["stylelint-declaration-block-no-ignored-properties"],
   "rules": {
-    "plugin/declaration-block-no-ignored-properties": true,
-    "media-feature-name-no-vendor-prefix": true,
+    "at-rule-no-unknown": [true, { "ignoreAtRules": ["use"] }],
     "at-rule-no-vendor-prefix": true,
-    "selector-no-vendor-prefix": true,
-    "property-no-vendor-prefix": true,
-    "value-no-vendor-prefix": true,
     "max-empty-lines": 1,
+    "media-feature-name-no-vendor-prefix": true,
+    "plugin/declaration-block-no-ignored-properties": true,
+    "property-no-vendor-prefix": true,
     "rule-empty-line-before": "always",
-    "at-rule-no-unknown": [true, { "ignoreAtRules": ["use"] }]
+    "selector-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true
   },
   "overrides": [
     {
