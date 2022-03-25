@@ -60,6 +60,13 @@ module.exports = {
           filename: "video/[name][ext]",
         },
       },
+      {
+        test: /\.json$/,
+        type: "asset/resource",
+        generator: {
+          filename: "[name][ext]",
+        },
+      },
     ],
   },
   resolve: {
