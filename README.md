@@ -1,4 +1,4 @@
-# vue-webpack-boilerplate
+# <img src="./src/assets/icons/favicons/favicon.svg" alt="Vue icon" width="32"/>  vue-webpack-boilerplate
 
 Vue webpack boilerplate is a frontend template for creating web applications and websites.
 
